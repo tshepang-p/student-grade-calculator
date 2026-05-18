@@ -1,11 +1,16 @@
-# Step 1: Build the project using Maven and Java 21
-FROM maven:21
+FROM tomcat:9.0-jdk11
 
-WORKDIR /app
+# Set memory limit for Render free tier
+ENV JAVA_OPTS="-Xmx256m"
 
-COPY GradeCalculator.java .
+# Remove default Tomcat apps
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Install app dependencies
-RUN javac GradeCalculator.java
+# Copy WAR file - rename to ROOT.war for root context
+COPY target/grade-calculator.war /usr/local/tomcat/webapps/ROOT.war
 
-CMD ["java", "GradeCalculator"]
+# Expose Tomcat port
+EXPOSE 8080
+
+# Start Tomcat
+CMD ["catalina.sh", "run"]
