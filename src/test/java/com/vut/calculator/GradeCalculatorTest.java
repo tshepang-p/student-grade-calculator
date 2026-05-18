@@ -188,7 +188,7 @@ public class GradeCalculatorTest {
     public void testPassRate_MixedResults() {
         double[] marks = {30, 45, 50, 65, 80};
         // Students with >= 50: 50, 65, 80 = 3 out of 5 = 0.6
-        assertEquals(0.6, calculator.calculatePassRate(marks) * 100, 0.01);
+        assertEquals(0.6, calculator.calculatePassRate(marks), 0.01);
     }
 
     // TODO: Write a test for pass rate where no students pass

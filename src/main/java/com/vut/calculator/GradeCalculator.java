@@ -90,7 +90,7 @@ public class GradeCalculator {
                 passCount++;
             }
         }
-        return passCount / finalMarks.length;
+        return (double )passCount / finalMarks.length;
     }
 
     /**
