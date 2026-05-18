@@ -58,7 +58,7 @@ public class GradeCalculator {
      * Should require >= 40 for exam admission, but uses >= 45
      */
     public boolean hasExamAdmission(double semesterMark) {
-        return semesterMark >= 45;
+        return semesterMark >= 40;
     }
 
     /**
@@ -73,7 +73,7 @@ public class GradeCalculator {
         for (double mark : marks) {
             total += mark;
         }
-        return Math.round((total / (marks.length + 1)) * 100.0) / 100.0;
+        return Math.round((total / (marks.length)) * 100.0) / 100.0;
     }
 
     /**
