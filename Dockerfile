@@ -1,16 +1,14 @@
 FROM tomcat:9.0-jdk11
 
-# Set memory limit for Render free tier
+WORKDIR /app
+
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+FROM tomcat:9.0-jdk11
 ENV JAVA_OPTS="-Xmx256m"
-
-# Remove default Tomcat apps
 RUN rm -rf /usr/local/tomcat/webapps/*
-
-# Copy WAR file - rename to ROOT.war for root context
-COPY target/grade-calculator.war /usr/local/tomcat/webapps/ROOT.war
-
-# Expose Tomcat port
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
-
-# Start Tomcat
 CMD ["catalina.sh", "run"]
