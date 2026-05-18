@@ -6,22 +6,21 @@ pipeline {
         jdk 'Java 21'
     }
 
+
     stages {
 
-        stage('Run Tests'){
-
+         stage('Build'){
             steps{
                 bat 'mvn clean package'
-                bat 'mvn test'
             }
         }
 
-
-
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
+        stage('Run Tests'){
+            steps{
+                bat 'mvn clean test'
+                
             }
         }
+       
     }
 }
