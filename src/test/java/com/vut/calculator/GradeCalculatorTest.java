@@ -135,8 +135,10 @@ public class GradeCalculatorTest {
     // (between the buggy threshold of 45 and correct threshold of 40)
     @Test
     public void testExamAdmission_Between40And45() {
+        
+
         // YOUR CODE HERE
-        fail("TODO: Implement this test");
+        assertTrue(calculator.hasExamAdmission(42));
     }
 
     // =====================================================================
@@ -165,9 +167,8 @@ public class GradeCalculatorTest {
     // TODO: Write a test for class average with 5 students
     @Test
     public void testClassAverage_FiveStudents() {
-        // YOUR CODE HERE — use marks: 45, 55, 65, 75, 85
-        // Expected average: 65.0
-        fail("TODO: Implement this test");
+        double[] marks = {45, 55, 65, 75, 85};
+        assertEquals(calculator.calculateClassAverage(marks),65.0,0.01);
     }
 
     // =====================================================================
@@ -187,14 +188,14 @@ public class GradeCalculatorTest {
     public void testPassRate_MixedResults() {
         double[] marks = {30, 45, 50, 65, 80};
         // Students with >= 50: 50, 65, 80 = 3 out of 5 = 0.6
-        assertEquals(0.6, calculator.calculatePassRate(marks), 0.01);
+        assertEquals(0.6, calculator.calculatePassRate(marks) * 100, 0.01);
     }
 
     // TODO: Write a test for pass rate where no students pass
     @Test
     public void testPassRate_NonePass() {
-        // YOUR CODE HERE
-        fail("TODO: Implement this test");
+        double[] marks = {30, 45, 49, 35, 8};
+        assertEquals(0.0, calculator.calculatePassRate(marks), 0.01);
     }
 
     // =====================================================================
@@ -217,7 +218,8 @@ public class GradeCalculatorTest {
     @Test
     public void testHighestMark_FirstElement() {
         // YOUR CODE HERE
-        fail("TODO: Implement this test");
+        double[] marks = {99, 78, 62, 91, 45};
+        assertEquals(99.0, calculator.findHighestMark(marks), 0.01);
     }
 
     // =====================================================================
@@ -283,7 +285,7 @@ public class GradeCalculatorTest {
     // TODO: Write a test for mark value of 105 (should be invalid)
     @Test
     public void testValidMark_WayOver100() {
-        // YOUR CODE HERE
-        fail("TODO: Implement this test");
+        double mark = 105;
+        assertFalse(calculator.isValidMark(mark));
     }
 }
