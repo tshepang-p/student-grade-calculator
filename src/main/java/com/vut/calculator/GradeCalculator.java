@@ -103,7 +103,7 @@ public class GradeCalculator {
         }
         double highest = marks[0];
         for (int i = 1; i < marks.length; i++) {
-            if (marks[i] < highest) {
+            if (marks[i] > highest) {
                 highest = marks[i];
             }
         }
@@ -143,7 +143,7 @@ public class GradeCalculator {
         if (hasExamAdmission(semesterMark)) {
             report.append("Exam Admission: ADMITTED\n");
             report.append("Exam Mark: ").append(examMark).append("\n");
-            double finalrk = calculateFinalMark(semesterMark, examMark);
+            double finalMark = calculateFinalMark(semesterMark, examMark);
             report.append("Final Mark: ").append(finalMark).append("\n");
             report.append("Grade: ").append(determineGrade(finalMark)).append("\n");
         } else {
