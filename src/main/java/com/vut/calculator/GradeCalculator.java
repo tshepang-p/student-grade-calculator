@@ -5,7 +5,7 @@ package com.vut.calculator;
  * 
  * This class calculates student grades based on semester marks and exam marks.
  * 
- * ===== GRADING RULES (as per VUT policy) =====
+ * ==== GRADING RULES (as per VUT policy) ====
  * Final Mark = (Semester Mark * 0.4) + (Exam Mark * 0.6)
  * 
  * Grade Boundaries:
